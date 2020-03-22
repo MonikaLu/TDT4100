@@ -1,8 +1,10 @@
+
 package app;
 
 public class Gameboard {
 	public String currentPlayerMark = "X";
 	public String[] brett = {"-", "-", "-", "-", "-", "-", "-", "-", "-"};
+	//public ArrayList<String> brett;
 	
 	
 	public void placeMark(int position) {
@@ -92,5 +94,3 @@ public class Gameboard {
 	
 	
 }
-	
-

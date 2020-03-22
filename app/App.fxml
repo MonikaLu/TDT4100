@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Gamecontroller">
    <children>
-      <GridPane gridLinesVisible="true" layoutX="209.0" layoutY="100.0" maxHeight="200.0" maxWidth="200.0" minHeight="200.0" minWidth="200.0">
+      <GridPane gridLinesVisible="true" layoutX="179.0" layoutY="100.0" maxHeight="200.0" maxWidth="200.0" minHeight="200.0" minWidth="200.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -70,31 +70,41 @@
             </Button>
          </children>
       </GridPane>
-      <Button fx:id="start" layoutX="89.0" layoutY="323.0" mnemonicParsing="false" onAction="#pressStart" onMouseClicked="#placeMark" text="RESTART" textAlignment="CENTER">
+      <Button fx:id="start" alignment="CENTER" layoutX="161.0" layoutY="323.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressStart" onMouseClicked="#placeMark" prefHeight="20.0" prefWidth="60.0" text="RESTART" textAlignment="CENTER">
          <font>
-            <Font size="18.0" />
+            <Font size="11.0" />
          </font>
       </Button>
       <TextField fx:id="p1" layoutX="15.0" layoutY="108.0" />
       <TextField fx:id="p2" layoutX="14.0" layoutY="171.0" />
-      <Text layoutX="15.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" />
-      <Text layoutX="14.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2:" />
-      <Text layoutX="218.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tic Tac Toe" textAlignment="CENTER" underline="true">
+      <Text layoutX="15.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Text>
+      <Text fill="#ad3838" fontSmoothingType="LCD" layoutX="218.0" layoutY="54.0" stroke="#662323" strokeType="OUTSIDE" strokeWidth="0.0" text="Tic Tac Toe" textAlignment="CENTER" underline="true">
          <font>
             <Font size="37.0" />
          </font>
       </Text>
-      <Button fx:id="rdybtn" layoutX="64.0" layoutY="216.0" mnemonicParsing="false" onAction="#playerInput" text="Ready" />
-      <TextField fx:id="winner" alignment="TOP_LEFT" editable="false" layoutX="424.0" layoutY="97.0" onAction="#newGame" prefHeight="39.0" prefWidth="168.0" />
-      <Button fx:id="save" layoutX="209.0" layoutY="323.0" mnemonicParsing="false" onAction="#saveGame" prefHeight="39.0" prefWidth="139.0" text="SAVE GAME">
+      <Button fx:id="rdybtn" layoutX="62.0" layoutY="214.0" mnemonicParsing="false" onAction="#playerInput" text="Ready" />
+      <TextField fx:id="winner" alignment="TOP_LEFT" disable="true" editable="false" layoutX="391.0" layoutY="99.0" onAction="#newGame" prefHeight="33.0" prefWidth="200.0">
          <font>
-            <Font size="18.0" />
+            <Font size="14.0" />
+         </font></TextField>
+      <Button fx:id="save" alignment="CENTER" layoutX="239.0" layoutY="323.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#saveGame" prefHeight="20.0" prefWidth="80.0" text="SAVE GAME" textAlignment="CENTER">
+         <font>
+            <Font size="11.0" />
          </font>
       </Button>
-      <Button fx:id="resumebtn" layoutX="361.0" layoutY="323.0" mnemonicParsing="false" onAction="#resumeGame" prefHeight="33.0" prefWidth="95.0" text="RESUME">
+      <Button fx:id="resumebtn" alignment="CENTER" layoutX="334.0" layoutY="323.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#resumeGame" prefHeight="20.0" prefWidth="60.0" text="RESUME">
          <font>
-            <Font size="18.0" />
+            <Font size="11.0" />
          </font>
       </Button>
+      <Text layoutX="15.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

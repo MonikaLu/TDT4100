@@ -25,7 +25,7 @@ public class Gamecontroller {
 	private boolean gameOver = false;
 	private SaveGame save = new SaveGame();
 
-	
+	//Inputfields with the playernames
  	@FXML	
 	public void playerInput(ActionEvent Event) {
 		this.player1.setPlayername(p1.getText());
@@ -35,16 +35,21 @@ public class Gamecontroller {
 		p2.setEditable(false);
 	}
 	
+ 	//Save the game status
 	@FXML
 	public void saveGame(ActionEvent e) {
 		this.save.writeToFile(this.game.brett);
 		winner.setText("The game is saved!");
 	}
 	
+	//method and button that resume the game.
 	@FXML
 	public void resumeGame(ActionEvent e) {
 		if (this.game.checkWin()) {
 			winner.setText("Game over! Can't resume :( ");
+		}
+		else if (this.game.checkTied()) {
+			winner.setText("Game over! Can't resume! ");
 		}
 		else {
 		this.save.readFile();
@@ -62,6 +67,8 @@ public class Gamecontroller {
 		}
 	}
 	
+	
+	//method for starting a new game
 	@FXML
 	public void newGame() {
 			tile1.setText(" ");
@@ -75,13 +82,17 @@ public class Gamecontroller {
 			tile9.setText(" ");
 			placeMark(null);
 			gameFlow();
+			this.gameOver = false;
+			for(int i = 0; i<9; i++) {
+				this.game.brett[i] = "-";
+			}
+			winner.setText(" ");
 			//må fjerne alle brikkene i filen
 		}
 	
-
-	
+	//method for checking if anybody have won, and keep changing the mark if the game is still going on.
 	@FXML
-	void gameFlow() {
+	public void gameFlow() {
 		if (game.checkWin()) {
 			winner.setText("The game is ended!");
 			this.gameOver = true;
@@ -93,6 +104,7 @@ public class Gamecontroller {
 		game.changeMark();
 	}
 	
+	//method for placing the mark.
 	@FXML
 	public void placeMark(MouseEvent event) {
 		if(this.gameOver == false) {
@@ -142,11 +154,11 @@ public class Gamecontroller {
 	}
 	}
 	
+	//the method that keeps the restart button functioning.
 	@FXML
 	public void pressStart(ActionEvent Event) {
 		newGame();
 		placeMark(null);
-		winner.setText(" ");
 	} 
 	
 	
