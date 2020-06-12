@@ -28,6 +28,9 @@ public class SaveGame implements SaveGameInterface {
 		}
 	}
 	
+	//metoden som leser hva som står i filen. og sender ut en feilmelding i konsollen om det mislykkes.
+	//hasNext() 
+	//nextLine()
 	public void readFile() {
 		Scanner in;
 		try {
@@ -45,24 +48,19 @@ public class SaveGame implements SaveGameInterface {
 		}
 	}
 	
+	//metoden som skriver til filen. sender ut feilmelding hvis det mislykkes.
 	public void writeToFile(String[] gamestate) {
 		try {
 			PrintWriter outFile = new PrintWriter("filename.txt");
 			for(int i = 0; i < gamestate.length; i++) {
 				outFile.append(gamestate[i]);
 			}
-			outFile.close();
+			outFile.close();		//bruker ressurser fra OS, og streams bruker mye ressurser. derfor lurt å lukke filene for å unngå feil.
 		}
 		catch (FileNotFoundException e) {
-			System.err.println("Error: This doesn't work!");
+			System.err.println("Error: This doesn't work!"); //får rød feilmelding i Eclipse.
 			System.exit(1);
 		}
-	}
-
-	@Override
-	public void writeToFile() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	

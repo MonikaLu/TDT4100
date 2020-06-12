@@ -4,7 +4,7 @@ public class Account {
 	private double balance;
 	private double interestRate;
 	
-	public void Account(double balance, double interestRate) {
+	public Account(double balance, double interestRate) {
 		this.balance = balance;
 		if (balance < 0) {
 			throw new IllegalArgumentException("Startbeløpet må være positivt.\n" + balance + " er derfor ikke gyldig!");
@@ -46,7 +46,7 @@ public class Account {
 			this.balance -= uttak;
 		}
 		else {
-			throw new IllegalArgumentException("Du må skrive inn et positivt tall :)");
+			throw new IllegalArgumentException("Du må skrive inn et positivt tall!");
 		}
 	}
 	

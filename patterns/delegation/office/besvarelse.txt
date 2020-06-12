@@ -1,0 +1,14 @@
+Øving 8
+
+Delegering:
+Delegering handler om å delegere. Et objekt har allerede en ferdighet og mulighet til å gjennomføre oppgaven,
+men velger å overlate arbeidet til et annet objekt. Dette ligner litt på måten vi splitter opp en stor klasse til små hjelpeklasser.
+Fordelen med denne teknikken er at den har mer fleksibel teknikk enn arv for gjenbruk av eksisterende funksjonalitet.
+En generell delegeringsløsning har to objekter, hvor det ene er delegerende og det andre delegat.
+Det delegerende har en referanse til delegat, og et sett metoder som tilsvarer metoder hos delegat. 
+
+Observatør-observert-teknikken:
+Denne teknikken handler om to objekter: et som er observatøren, og det andre som det observerte.
+Observatøren må ha metoder som kan ta imot beskjeder om tilstandsendringene i objektene det observerer.
+Imens det observerte må ha metoder som kan: endre tilstanden sin, registrere observatører, melde endringene til observatørene.
+Fordelen med denne teknikken er at den gir muligheten for andre objekter å reagere på endringer, og i tillegg holde sin egen tilstand konsistent.

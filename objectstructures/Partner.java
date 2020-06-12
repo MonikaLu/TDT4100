@@ -2,57 +2,52 @@ package objectstructures;
 
 public class Partner {
 	private String name;
-	private Partner partner;
+	Partner partner;
 	
 	public Partner(String name) {
 		this.name = name;
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("[Partner %s is partner with %s]", name, (partner != null ? partner.name : null)) ;
+	}
+	
 	public String getName() {
-		return this.name;
+		return name;
 	}
 	
 	public Partner getPartner() {
-		return this.partner;
+		return partner;
 	}
 	
-	//hvis partner ikke er null, så skal den settes om til null. og dens assosiasjon til null.
 	public void setPartner(Partner partner) {
-		if(this.partner != null) {
-			this.partner.partner = null;
-			this.partner = null;
+
+//		flette forhold mellom oss
+		if (partner == this.partner) {
+			return;
 		}
-			
-		if(partner != null) {
-			if(partner.partner != null) {
-				partner.partner.setPartner(null);
-			}
-			partner.partner = this;
-			this.partner = partner;
-		}		
-	}
-	
-	@Override
-	public String toString() {
-		return this.name;
+//		så lenge oldPartner sin partner er meg, skal vi løse opp forholdet vårt.
+		Partner oldPartner = this.partner;
+		this.partner = partner;
+		if (oldPartner != null && oldPartner.getPartner() == this) {
+			oldPartner.setPartner(null);
+		}
+//		så lenge vi ikke skal løse opp forholdet, så skal flette forholdet vårt.
+		if (this.partner != null) {
+			this.partner.setPartner(this);
+		}
 	}
 	
 	public static void main(String args[]) {
-		Partner p1 = new Partner("jon");
-		Partner p2 = new Partner("monika");
-		Partner p3 = new Partner("annika");
-		Partner p4 = new Partner("håvard");
-		p1.setPartner(p2); //koble sammen p1 og p2
-		p1.setPartner(null); //løse opp Partnerskapet
-		p1.setPartner(p3); //løse opp p1 og p2, og p3 og p4. p1 og p2 inngår Partnerskap
-		
-		try {
-			System.out.println(p1.getPartner());
-			System.out.println(p2.getPartner());
-			System.out.println(p3.getPartner());
-		} catch(Error e) {
-			System.out.print(e);
-		}
+		Partner p1 = new Partner("Monika");
+		Partner p2 = new Partner("Jon");
+		p1.setPartner(p2);
+		System.out.println(p1);
+		p1.setPartner(p1);
+		System.out.println(p1);
 	}
 	
 }
+
+	

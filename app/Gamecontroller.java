@@ -19,11 +19,11 @@ public class Gamecontroller {
 	@FXML
 	TextField p1, p2, winner;
 	
-	private Gameboard game = new Gameboard();
-	private Player player1 = new Player();
-	private Player player2 = new Player();
+	private Gameboard game;
+	private Player player1;
+	private Player player2;
 	private boolean gameOver = false;
-	private SaveGame save = new SaveGame();
+	private SaveGame save;
 
 	//Inputfields with the playernames
  	@FXML	
@@ -42,7 +42,13 @@ public class Gamecontroller {
 		winner.setText("The game is saved!");
 	}
 	
-	//method and button that resume the game.
+	//metoden som gjør det mulig å fortsette å spille.
+	//denne metoden er koblet til "resume" knappen i SceneBuilder.
+	//men hvis spillet allerede er over, så er det bare mulig å lagre spillet, men ikke fortsette å spille senere.
+	//det vil også komme opp en melding som oppplyser dette.
+	//fant ikke en bedre måte å skrive denne kodeblokken på, så det ble litt hardcode.
+	//problem: jeg får opp nullPointerException når placeMark(null) kjøres. og det går på at jeg setter inn null som parameter.
+	//men vet ikke hvordan jeg ellers kan reuse en event metode utenom å sette inn null istedenfor ActionEvent.
 	@FXML
 	public void resumeGame(ActionEvent e) {
 		if (this.game.checkWin()) {
@@ -68,7 +74,7 @@ public class Gamecontroller {
 	}
 	
 	
-	//method for starting a new game
+	//metoden for at et nytt game skal kunne starte uavhengig av forrige spill.
 	@FXML
 	public void newGame() {
 			tile1.setText(" ");
@@ -98,13 +104,14 @@ public class Gamecontroller {
 			this.gameOver = true;
 		}
 		else if (this.game.checkTied()) {
-			winner.setText("It's tied!");
+			winner.setText("It's tied! Nice play!");
 			return;
 		}
 		game.changeMark();
 	}
 	
 	//method for placing the mark.
+	//lage en ny metode som jeg kan reuse istedenfor å  bruke placeMark(MouseEvent event).
 	@FXML
 	public void placeMark(MouseEvent event) {
 		if(this.gameOver == false) {
